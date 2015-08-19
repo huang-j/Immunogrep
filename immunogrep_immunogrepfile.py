@@ -150,6 +150,10 @@ num_line_search = 10
 #sometimes additional info such as sequence id is passed along in the sequence header
 #this fucntion will check if any immunogrep data is in sequence header and return it
 def GetAdditionalInfo(header_line):
+    '''
+        In the case that additional info such as sequence id is passed along in the sequence header, this function will check if any immunogrep data is in the sequence header and return it.
+        realtime test
+    '''
     additional_info = {'document_header':header_line}
     if fasta_file_delimiter in header_line:
         tmp=header_line.split(fasta_file_delimiter) #if extra info is included in the header, then it is passed using the the fasta_file_delimiter
@@ -165,14 +169,14 @@ def GetAdditionalInfo(header_line):
     return [header,additional_info]
 
 def find_imgt_file_type_index(filename,important_headers_only=True):
-        filename = os.path.basename(filename)
-        imgt_file_type = filename.strip().split('_')
-        imgt_file_type = '_'.join(imgt_file_type[0:2])
-        imgt_file = [i+1 for i,a in enumerate(imgt_files_info) if a['Name']==imgt_file_type]
-        if len(imgt_file)>0:
-            return [imgt_file[0],imgt_files_info[imgt_file[0]-1]['Important_Headers']] if important_headers_only else [imgt_file[0],imgt_files_info[imgt_file[0]-1]['Headers']]
-        else:
-            return [None,None]
+    filename = os.path.basename(filename)
+    imgt_file_type = filename.strip().split('_')
+    imgt_file_type = '_'.join(imgt_file_type[0:2])
+    imgt_file = [i+1 for i,a in enumerate(imgt_files_info) if a['Name']==imgt_file_type]
+    if len(imgt_file)>0:
+        return [imgt_file[0],imgt_files_info[imgt_file[0]-1]['Important_Headers']] if important_headers_only else [imgt_file[0],imgt_files_info[imgt_file[0]-1]['Headers']]
+    else:
+        return [None,None]
 
 
 #WE ASSUME IMGT FILES ARE LABELED USING IMGT RULES:

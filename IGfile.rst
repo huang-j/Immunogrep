@@ -26,6 +26,18 @@ Variables
 '''''''''
 :current_filetypes:
 
+    =========   =================
+    Filetype
+    ---------   -----------------
+    FASTA       fna, fasta
+    TAB         txt, tab
+    CSV         csv
+    FASTQ       fastq
+    JSON        json, annotation, analysis, query, iffile, IFFile
+    DELIM       delim
+    IMGT        imgt
+    =========   =================
+
 :ref:`^To Top <immunogrepfile>`
 
 .. _fileheaders:
@@ -33,7 +45,7 @@ Variables
 Header Extraction Functions
 '''''''''''''''''''''''''''
 
-.. automodule:: immunogrepfilep_immunogrepfile
+.. automodule:: immunogrep_immunogrepfile
     :members: GetAdditionalInfo, find_imgt_file_type_index, GroupIMGTFiles, ReadIgBlastQueryBlock
     :undoc-members:
 
