@@ -24,6 +24,7 @@ Contents:
 
 Variables
 '''''''''
+:current_filetypes:
 
 :ref:`^To Top <immunogrepfile>`
 
@@ -32,7 +33,7 @@ Variables
 Header Extraction Functions
 '''''''''''''''''''''''''''
 
-.. automodule:: immunogrep_immunogrepfile
+.. automodule:: immunogrepfilep_immunogrepfile
     :members: GetAdditionalInfo, find_imgt_file_type_index, GroupIMGTFiles, ReadIgBlastQueryBlock
     :undoc-members:
 
