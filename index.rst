@@ -1,5 +1,5 @@
 .. Immunogrep documentation master file, created by
-   sphinx-quickstart on Mon Aug  3 15:05:52 2015.
+   sphinx-quickstart on Wed Aug 19 11:52:14 2015.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -23,4 +23,3 @@ Indices and tables
 * :ref:`search`
 * :ref:`license`
 * :ref:`questions`
-
