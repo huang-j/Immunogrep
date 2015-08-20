@@ -359,6 +359,9 @@
 <span class="c"># +immunogrepFile Class +</span>
 <span class="c"># +++++++++++++++++++++++</span></div>
 <div class="viewcode-block" id="immunogrepFile"><a class="viewcode-back" href="../IGfile.html#immunogrep_immunogrepfile.immunogrepFile">[docs]</a><span class="k">class</span> <span class="nc">immunogrepFile</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This is the primary class that is run. Will check the file type.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="c">#the following parameters are ONLY used for IMGT : important_headers_only =True,include_parameters_file=False,required_files=0</span>
     <span class="c">#the following parameters are ONLY used for DELIM files/TAB/CSV: delimiter=None, contains_header=True</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filelocation</span><span class="p">,</span><span class="n">filetype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">decoratorinfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">contains_header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">field_names</span><span class="o">=</span><span class="p">[],</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">important_headers_only</span> <span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">include_parameters_file</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">required_files</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -789,6 +792,10 @@
 
 </div>
 <div class="viewcode-block" id="immunogrepFASTA"><a class="viewcode-back" href="../IGfile.html#immunogrep_immunogrepfile.immunogrepFASTA">[docs]</a><span class="k">class</span> <span class="nc">immunogrepFASTA</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        .. seealso:</span>
+<span class="sd">            :py:class:`.immunogrepFile`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filelocation</span><span class="p">,</span><span class="n">filetype</span><span class="p">,</span><span class="n">decoratorinfo</span><span class="o">=</span><span class="n">FASTAdecoratorinfo</span><span class="p">,</span><span class="n">contains_header</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="n">field_names</span><span class="o">=</span><span class="p">[],</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filelocation</span><span class="o">=</span><span class="n">filelocation</span>
         <span class="n">fasta_file_comment</span> <span class="o">=</span> <span class="s">&quot;#&quot;</span> <span class="c">#standard comment for all fastafiles</span>
