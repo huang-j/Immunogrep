@@ -244,6 +244,9 @@ def ReadIgBlastQueryBlock(f1,igblast_eof = False):
 # +immunogrepFile Class +
 # +++++++++++++++++++++++
 class immunogrepFile():
+    '''
+        This is the primary class that is run. Will check the file type.
+    '''
     #the following parameters are ONLY used for IMGT : important_headers_only =True,include_parameters_file=False,required_files=0
     #the following parameters are ONLY used for DELIM files/TAB/CSV: delimiter=None, contains_header=True
     def __init__(self,filelocation,filetype=None,decoratorinfo=None,delimiter=None,contains_header=True,mode='r',field_names=[],chunk_size=1,important_headers_only =True,include_parameters_file=False,required_files=0):
@@ -674,6 +677,10 @@ class immunogrepFile():
 
 
 class immunogrepFASTA():
+    '''
+        .. seealso:
+            :py:class:`.immunogrepFile`
+    '''
     def __init__(self,filelocation,filetype,decoratorinfo=FASTAdecoratorinfo,contains_header=False,mode='r',field_names=[],chunk_size=1):
         self.filelocation=filelocation
         fasta_file_comment = "#" #standard comment for all fastafiles

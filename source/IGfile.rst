@@ -55,7 +55,10 @@ Header Extraction Functions
 
 Immunogrep Classes
 ''''''''''''''''''
-    consists of several classes to import various file types
+    Consists of several classes to import various file types. Many of the classes have similar functions.
+
+    .. note:
+        :py:class:`.immunogrepFile` is the primary class that is run.
 
 .. autoclass:: immunogrepFile
     :members:
