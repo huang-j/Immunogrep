@@ -16,11 +16,20 @@
 import sys
 import os
 import shlex
+import inspect
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('Scripts'))
+#sys.path.insert(0, os.path.abspath(inspect.getfile(inspect.currentframe()))))
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(os.path.dirname(currentdir))
+sys.path.insert(0,parentdir+'/')
+
+#currentdir = os.path.dirname(os.path.abspath(parentdir))
+#parentdir = os.path.dirname(currentdir)
+#sys.path.insert(0,parentdir)
+
 
 # -- General configuration ------------------------------------------------
 
