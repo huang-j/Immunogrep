@@ -169,6 +169,9 @@ def GetAdditionalInfo(header_line):
     return [header,additional_info]
 
 def find_imgt_file_type_index(filename,important_headers_only=True):
+    '''
+
+    '''
     filename = os.path.basename(filename)
     imgt_file_type = filename.strip().split('_')
     imgt_file_type = '_'.join(imgt_file_type[0:2])
@@ -245,7 +248,7 @@ def ReadIgBlastQueryBlock(f1,igblast_eof = False):
 # +++++++++++++++++++++++
 class immunogrepFile():
     '''
-        This is the primary class that is run. Will check the file type.
+        This is the primary class that is run. Checks the file type and then .
     '''
     #the following parameters are ONLY used for IMGT : important_headers_only =True,include_parameters_file=False,required_files=0
     #the following parameters are ONLY used for DELIM files/TAB/CSV: delimiter=None, contains_header=True
@@ -317,12 +320,29 @@ class immunogrepFile():
             self.IFclass=None
 
     def getFilelocation(self):
+        '''
+            Returns the location of the file.
+        '''
         return self.filelocation
 
     def getFiletype(self):
+        '''
+            Returns the filetype (Fasta, Tab, Csv, etc.)
+        '''
         return self.filetype
 
     def guessFiletype(self):
+        '''
+            A function that check the filetype.
+
+            .. seealso::
+                :py:func:`.isFASTA`
+                :py:func:`.isFASTQ`
+                :py:func:`.isJSON`
+                :py:func:`.isTAB`
+                :py:func:`.isCSV`
+
+        '''
         check = []
         fileformat=['FASTA','FASTQ','JSON','TAB','CSV']
 
@@ -353,6 +373,9 @@ class immunogrepFile():
         return self.filetype
 
     def getDecoratorinfo(self):
+        '''
+            Returns Decorator information
+        '''
         if self.isimmunogrepFile() and self.decoratorinfo==None:
             with open(self.filelocation,"r") as f:
                 line=f.readline()
@@ -366,6 +389,9 @@ class immunogrepFile():
             return self.decoratorinfo
 
     def getDescription(self):
+        '''
+            Returns the description information from the decorator
+        '''
         if self.IFclass:
             if self.getDecoratorinfo()!=None:
                 if self.getDecoratorinfo()[description_var]:
@@ -379,6 +405,9 @@ class immunogrepFile():
             return None
 
     def getTranslation(self):
+        '''
+            Returns the translation informationfrom decorator
+        '''
         if self.getDecoratorinfo()!=None:
             if self.getDecoratorinfo()[translation_var]:
                 t=self.getDecoratorinfo()[translation_var]
@@ -391,6 +420,11 @@ class immunogrepFile():
     # Note: create method will create/overwrite file specificed in filelocation and add decorator to the first line
     # This function is a residual function; might be obsolete
     def create(self):
+        '''
+            .. note::
+                This method will create/overwrite a file specificed in filelocation and add a decorator to the first line
+                This function is a residual function; might be obsolete.
+        '''
         with open(self.filelocation+'.'+IFExt,"w") as f:
             f.write(descriptor_symbol+str(self.decoratorinfo)+'\n')
         self.filelocation=self.filelocation+'.'+IFExt
@@ -469,6 +503,10 @@ class immunogrepFile():
 
     # Note: Must be a block delimited file format; jaggered delimited file format is considered invalid
     def isDelim(self,delimiter):
+        '''
+            .. note::
+                Must be a block delimited file format; jaggered delimited file format is considered invalid
+        '''
         check=False
         chkcnt=[]
 
@@ -525,6 +563,9 @@ class immunogrepFile():
             return False
 
     def convert2FASTA(self,headervar,sequencevar,keepinfo=False):
+        '''
+            Converts JSON filetype to Fasta
+        '''
         if self.filetype=='JSON':
             with open(self.filelocation+'.fna',"w") as fout:
                 with open(self.filelocation,"r") as f:
@@ -546,6 +587,9 @@ class immunogrepFile():
         self.filetype='FASTA'
 
     def convert2FASTQ(self,headervar,sequencevar,qualvar,keepinfo=False):
+        '''
+            Converts JSON to FASTQ
+        '''
         if self.filetype=='JSON':
             with open(self.filelocation+'.fastq',"w") as fout:
                 with open(self.filelocation,"r") as f:
@@ -567,6 +611,9 @@ class immunogrepFile():
         self.filetype='FASTQ'
 
     def convert2Delim(self,descriptionlist,delimiter):
+        '''
+            Converts JSON filetype to Delimited
+        '''
         if self.filetype=='JSON':
             with open(self.filelocation+'.txt',"w") as fout:
                 with open(self.filelocation,"r") as f:
@@ -599,6 +646,9 @@ class immunogrepFile():
         self.filetype='DELIM'
 
     def convert2TAB(self,descriptionlist):
+        '''
+            Converts JSON to TAB
+        '''
         if self.filetype=='JSON':
             with open(self.filelocation+'.txt',"w") as fout:
                 with open(self.filelocation,"r") as f:
@@ -631,6 +681,9 @@ class immunogrepFile():
         self.filetype='TAB'
 
     def convert2CSV(self,descriptionlist):
+        '''
+            Converts JSON to CSV
+        '''
         if self.filetype=='JSON':
             with open(self.filelocation+'.csv',"w") as fout:
                 with open(self.filelocation,"r") as f:
@@ -665,6 +718,9 @@ class immunogrepFile():
     #generator constructor for simple file reading
     #dummy_var=>I had to call immunogrepfile.read() in a function , but that function assumed there had to be a parameter passed into read function. So I set a dummy_var that never gets Used
     def read(self,dummy_var=None):
+        '''
+            File reader
+        '''
         if self.IFclass == None:
             return
         while not(self.IFclass.eof):
@@ -678,7 +734,7 @@ class immunogrepFile():
 
 class immunogrepFASTA():
     '''
-        .. seealso:
+        .. seealso::
             :py:class:`.immunogrepFile`
     '''
     def __init__(self,filelocation,filetype,decoratorinfo=FASTAdecoratorinfo,contains_header=False,mode='r',field_names=[],chunk_size=1):

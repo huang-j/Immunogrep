@@ -552,6 +552,7 @@ def LoopStatusGen(totalSeq,perIndicate,addedInfo=None):
 
         .. seealso::
            :py:func:`.LoopStatus`
+
     """
     counter=0
     startPer = 0
