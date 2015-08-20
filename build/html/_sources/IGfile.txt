@@ -57,7 +57,7 @@ Immunogrep Classes
 ''''''''''''''''''
     Consists of several classes to import various file types. Many of the classes have similar functions.
 
-    .. note:
+    .. note::
         :py:class:`.immunogrepFile` is the primary class that is run.
 
 .. autoclass:: immunogrepFile
