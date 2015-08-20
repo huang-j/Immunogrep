@@ -736,6 +736,8 @@ class immunogrepFASTA():
     '''
         .. seealso::
             :py:class:`.immunogrepFile`
+
+        temp edit
     '''
     def __init__(self,filelocation,filetype,decoratorinfo=FASTAdecoratorinfo,contains_header=False,mode='r',field_names=[],chunk_size=1):
         self.filelocation=filelocation
